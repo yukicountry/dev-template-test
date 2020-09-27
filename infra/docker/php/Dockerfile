@@ -1,9 +1,15 @@
-FROM php:7.3-fpm
-SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
+FROM php:7.3-fpm-alpine
+SHELL ["/bin/ash", "-oeux", "pipefail", "-c"]
 
-ENV TZ=Asia/Tokyo
+RUN apk upgrade --update && \
+  apk --no-cache add tzdata
 
-COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
+    # change timezone UTC to JST
+RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+  echo "Asia/Tokyo" > /etc/timezone && \
+  apk del tzdata && \
+  # add composer
+  php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 
 # zz-docker.confの設定を上書きするためファイル名zzz-www.confとしてコピー
 COPY ./www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
