@@ -9,6 +9,7 @@ RUN apk upgrade --update && \
   apk del tzdata && \
   # add composer
   php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer && \
+  # php extensions required for laravel installation
   docker-php-ext-install bcmath
 
 # zz-docker.confの設定を上書きするためファイル名zzz-www.confとしてコピー
