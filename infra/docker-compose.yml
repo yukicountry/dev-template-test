@@ -15,5 +15,11 @@ services:
       - ../backend:/work/backend
       - php-fpm-socket:/var/run/php-fpm
 
+  db:
+    build: ./mysql
+    volumes:
+      - db-store:/var/lib/mysql
+
 volumes:
   php-fpm-socket:
+  db-store:
