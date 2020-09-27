@@ -1,4 +1,5 @@
 FROM php:7.3-fpm
+SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
 COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
 
