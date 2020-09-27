@@ -6,3 +6,5 @@ ENV TZ=Asia/Tokyo \
   MYSQL_DATABASE=youfolio-db \
   MYSQL_USER=youfolio-developer \
   MYSQL_PASSWORD=secret
+
+COPY ./myopt.cnf /etc/mysql/conf.d/myopt.cnf
