@@ -1,6 +1,8 @@
 FROM php:7.3-fpm
 SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
+ENV TZ=Asia/Tokyo
+
 COPY --from=composer:1.10 /usr/bin/composer /usr/bin/composer
 
 # zz-docker.confの設定を上書きするためファイル名zzz-www.confとしてコピー
