@@ -10,7 +10,7 @@ RUN apk upgrade --update && \
   # add composer
   php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer && \
   # php extensions required for laravel installation
-  docker-php-ext-install bcmath
+  docker-php-ext-install bcmath pdo_mysql
 
 # zz-docker.confの設定を上書きするためファイル名zzz-www.confとしてコピー
 COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
