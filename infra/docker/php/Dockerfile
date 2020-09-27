@@ -9,7 +9,8 @@ RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
   echo "Asia/Tokyo" > /etc/timezone && \
   apk del tzdata && \
   # add composer
-  php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+  php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer && \
+  docker-php-ext-install bcmath
 
 # zz-docker.confの設定を上書きするためファイル名zzz-www.confとしてコピー
 COPY ./www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
