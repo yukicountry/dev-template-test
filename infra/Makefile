@@ -1,3 +1,9 @@
+web:
+	docker-compose exec web ash
+app:
+	docker-compose exec app ash
+db:
+	docker-compose exec db bash
 migrate:
 	docker-compose exec app php artisan migrate
 sql:
