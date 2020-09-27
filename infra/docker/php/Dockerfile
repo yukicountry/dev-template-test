@@ -2,7 +2,7 @@ FROM php:7.3-fpm-alpine
 SHELL ["/bin/ash", "-oeux", "pipefail", "-c"]
 
 RUN apk upgrade --update && \
-  apk --no-cache add tzdata
+  apk --no-cache add tzdata zip
 
     # change timezone UTC to JST
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
