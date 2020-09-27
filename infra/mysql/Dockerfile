@@ -1,4 +1,5 @@
 FROM mysql:8.0.21
+SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
 ENV TZ=Asia/Tokyo \
   MYSQL_ROOT_PASSWORD=secret \
