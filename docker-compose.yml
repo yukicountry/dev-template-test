@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  web:
+    build: ./infra/docker/nginx
+    volumes:
+      - ./backend:/work/backend
+      - php-fpm-socket:/var/run/php-fpm
+    ports:
+      - "8080:80"
+
+  app:
+    build: ./infra/docker/php
+    volumes:
+      - ./backend:/work/backend
+      - php-fpm-socket:/var/run/php-fpm
+
+volumes:
+  php-fpm-socket:
+    name: php-fpm-socket
+    driver: local
