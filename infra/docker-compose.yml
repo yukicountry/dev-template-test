@@ -17,5 +17,3 @@ services:
 
 volumes:
   php-fpm-socket:
-    name: php-fpm-socket
-    driver: local
