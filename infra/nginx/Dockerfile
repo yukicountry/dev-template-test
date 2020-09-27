@@ -8,3 +8,4 @@ RUN apk add --update --no-cache tzdata && \
     apk del tzdata
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY ./ssl /etc/nginx/ssl
