@@ -13,6 +13,6 @@ RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
   docker-php-ext-install bcmath
 
 # zz-docker.confの設定を上書きするためファイル名zzz-www.confとしてコピー
-COPY ./www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
+COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 
 WORKDIR /work/backend
