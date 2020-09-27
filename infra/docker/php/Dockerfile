@@ -14,3 +14,5 @@ RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
 
 # zz-docker.confの設定を上書きするためファイル名zzz-www.confとしてコピー
 COPY ./www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
+
+WORKDIR /work/backend
