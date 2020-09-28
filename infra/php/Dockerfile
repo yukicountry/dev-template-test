@@ -7,8 +7,6 @@ RUN apk upgrade --update && \
   cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
   echo "Asia/Tokyo" > /etc/timezone && \
   apk del tzdata && \
-  # add composer
-  php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer && \
   # php extensions required for laravel installation
   docker-php-ext-install bcmath pdo_mysql
 
