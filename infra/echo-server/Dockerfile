@@ -10,6 +10,9 @@ RUN apk upgrade --update && \
 
 RUN npm install -g laravel-echo-server
 
-COPY ./laravel-echo-server.json /laravel-echo-server.json
+COPY ./laravel-echo-server.json /laravel-echo-server/laravel-echo-server.json
+COPY ./ssl /laravel-echo-server/ssl
+
+WORKDIR /laravel-echo-server
 
 CMD ["laravel-echo-server", "start"]
