@@ -38,6 +38,9 @@ services:
     volumes:
       - ../backend:/work/backend
 
+  socket:
+    build: ./echo-server
+
   redis:
     build: ./redis
 
