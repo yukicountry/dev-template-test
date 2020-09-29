@@ -2,8 +2,14 @@ web:
 	docker-compose exec web ash
 app:
 	docker-compose exec app ash
+composer:
+	docker-compose exec composer ash
+worker:
+	docker-compose exec worker ash
 db:
 	docker-compose exec db bash
+node:
+	docker-compose exec node ash
 migrate:
 	docker-compose exec app php artisan migrate
 sql:
