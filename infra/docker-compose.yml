@@ -40,6 +40,8 @@ services:
 
   socket:
     build: ./echo-server
+    ports:
+      - 6001:6001
 
   redis:
     build: ./redis
