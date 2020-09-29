@@ -7,13 +7,20 @@ RUN apk upgrade --update && \
     zip \
     freetype-dev \
     libjpeg-turbo-dev \
-    libpng-dev && \
+    libpng-dev \
+    pcre-dev \
+    ${PHPIZE_DEPS} && \
   # change timezone UTC to JST
   cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
   echo "Asia/Tokyo" > /etc/timezone && \
-  apk del tzdata && \
   # php extensions required for laravel installation
-  docker-php-ext-install bcmath gd pdo_mysql
+  docker-php-ext-install bcmath gd pdo_mysql && \
+  # install redis php extension
+  pecl install redis && \
+  docker-php-ext-enable redis && \
+  # cleaning
+  apk del tzdata pcre-dev ${PHPIZE_DEPS} && \
+  rm -rf /tmp/pear
 
 # zz-docker.confの設定を上書きするためファイル名zzz-www.confとしてコピー
 COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
