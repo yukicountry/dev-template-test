@@ -38,6 +38,9 @@ services:
     volumes:
       - ../backend:/work/backend
 
+  redis:
+    build: ./redis
+
 volumes:
   php-fpm-socket:
   db-store:
