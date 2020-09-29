@@ -21,6 +21,11 @@ services:
     volumes:
       - ../backend:/work/backend
 
+  worker:
+    build: ./worker
+    volumes:
+      - ../backend:/work/backend
+
   db:
     build: ./mysql
     volumes:
