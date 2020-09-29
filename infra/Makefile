@@ -1,3 +1,4 @@
+# 端末ログイン
 web:
 	docker-compose exec web ash
 app:
@@ -10,10 +11,14 @@ db:
 	docker-compose exec db bash
 node:
 	docker-compose exec node ash
+
+# DB
 migrate:
 	docker-compose exec app php artisan migrate
 sql:
 	docker-compose exec db bash -c 'mysql --user=$$MYSQL_USER --password=$$MYSQL_PASSWORD --database=$$MYSQL_DATABASE'
+
+# インストール
 composer-install:
 	docker-compose run composer composer install
 npm-install:
