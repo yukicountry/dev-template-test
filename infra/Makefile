@@ -15,6 +15,18 @@ node:
 # DB
 migrate:
 	docker-compose exec app php artisan migrate
+reset:
+	docker-compose exec app php artisan migrate:reset
+seed:
+	docker-compose exec app php artisan db:seed
+refresh:
+	docker-compose exec app php artisan migrate:refresh
+passport-install:
+	docker-compose exec app php artisan passport:install
+reconstruct:
+	@make refresh
+	@make seed
+	@make passport-install
 sql:
 	docker-compose exec db bash -c 'mysql --user=$$MYSQL_USER --password=$$MYSQL_PASSWORD --database=$$MYSQL_DATABASE'
 
