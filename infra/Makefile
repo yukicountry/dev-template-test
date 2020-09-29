@@ -10,3 +10,5 @@ sql:
 	docker-compose exec db bash -c 'mysql --user=$$MYSQL_USER --password=$$MYSQL_PASSWORD --database=$$MYSQL_DATABASE'
 composer-install:
 	docker-compose run composer composer install
+npm-install:
+	docker-compose run node npm install
