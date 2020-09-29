@@ -11,6 +11,8 @@ db:
 	docker-compose exec db bash
 node:
 	docker-compose exec node ash
+redis:
+	docker-compose exec redis ash
 
 # DB
 migrate:
