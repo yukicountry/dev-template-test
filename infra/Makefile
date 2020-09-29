@@ -23,6 +23,10 @@ refresh:
 	docker-compose exec app php artisan migrate:refresh
 passport-install:
 	docker-compose exec app php artisan passport:install
+construct:
+	@make migrate
+	@make seed
+	@make passport-install
 reconstruct:
 	@make refresh
 	@make seed
