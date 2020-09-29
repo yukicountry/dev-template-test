@@ -1,3 +1,7 @@
+# コンテナ
+up:
+	docker-compose -f docker-compose.yml -f docker-compose-dev.yml up
+
 # 端末ログイン
 web:
 	docker-compose exec web ash
