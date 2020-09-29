@@ -6,4 +6,4 @@ RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-di
 
 WORKDIR /work/backend
 
-ENTRYPOINT ["echo", "This container is not for daemon and will exit."]
+CMD ["echo", "This container is not for daemon and will exit."]
