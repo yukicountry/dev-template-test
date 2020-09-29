@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  web:
+    build: ./nginx
+    volumes:
+      - ../backend:/work/backend:delegated
+      - php-fpm-socket:/var/run/php-fpm:delegated
+    ports:
+      - 80:80
+      - 443:443
+
+  app:
+    build: ./php
+    volumes:
+      - ../backend:/work/backend:delegated
+      - php-fpm-socket:/var/run/php-fpm:delegated
+
+  composer:
+    build: ./composer
+    volumes:
+      - ../backend:/work/backend:delegated
+
+  worker:
+    build: ./worker
+    volumes:
+      - ../backend:/work/backend:delegated
+
+  db:
+    build: ./mysql
+    volumes:
+      - db-store:/var/lib/mysql:delegated
+    ports:
+      - 3306:3306
+
+  node:
+    build: ./node
+    volumes:
+      - ../backend:/work/backend:delegated
+
+  socket:
+    build: ./echo-server
+    ports:
+      - 6001:6001
+
+  redis:
+    build: ./redis
+
+volumes:
+  php-fpm-socket:
+  db-store:
