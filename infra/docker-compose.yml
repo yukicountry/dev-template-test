@@ -27,6 +27,12 @@ services:
     volumes:
       - ../backend:/work/backend
 
+  scheduler:
+    build: ./scheduler
+    init: true
+    volumes:
+      - ../backend:/work/backend
+
   db:
     build: ./mysql
     volumes:
