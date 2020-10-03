@@ -21,10 +21,10 @@ db:
 	docker-compose exec db bash
 node:
 	docker-compose exec node ash
+socket:
+	docker-compose exec socket ash
 redis:
 	docker-compose exec redis ash
-echo:
-	docker-compose exec echo-server ash
 
 # DB
 migrate:
