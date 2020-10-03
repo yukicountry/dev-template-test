@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   web:
-    build: ./nginx
+    build: ./web
     volumes:
       - ../backend:/work/backend
       - php-fpm-socket:/var/run/php-fpm
@@ -34,7 +34,7 @@ services:
       - ../backend:/work/backend
 
   db:
-    build: ./mysql
+    build: ./db
     volumes:
       - db-store:/var/lib/mysql
     ports:
@@ -46,7 +46,7 @@ services:
       - ../backend:/work/backend
 
   socket:
-    build: ./echo-server
+    build: ./socket
     ports:
       - 6001:6001
 
