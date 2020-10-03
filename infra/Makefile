@@ -12,7 +12,7 @@ web:
 fpm:
 	docker-compose exec fpm ash
 composer:
-	docker-compose exec composer ash
+	docker-compose run composer ash
 worker:
 	docker-compose exec worker ash
 scheduler:
@@ -20,7 +20,7 @@ scheduler:
 db:
 	docker-compose exec db bash
 node:
-	docker-compose exec node ash
+	docker-compose run node ash
 socket:
 	docker-compose exec socket ash
 redis:
