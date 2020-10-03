@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   web:
-    build: ./web
+    build: ./services/web
     volumes:
       - ../backend:/work/backend
       - php-fpm-socket:/var/run/php-fpm
@@ -11,47 +11,47 @@ services:
       - 443:443
 
   fpm:
-    build: ./fpm
+    build: ./services/fpm
     volumes:
       - ../backend:/work/backend
       - php-fpm-socket:/var/run/php-fpm
 
   composer:
-    build: ./composer
+    build: ./services/composer
     volumes:
       - ../backend:/work/backend
 
   worker:
-    build: ./worker
+    build: ./services/worker
     init: true
     volumes:
       - ../backend:/work/backend
 
   scheduler:
-    build: ./scheduler
+    build: ./services/scheduler
     init: true
     volumes:
       - ../backend:/work/backend
 
   db:
-    build: ./db
+    build: ./services/db
     volumes:
       - db-store:/var/lib/mysql
     ports:
       - 3306:3306
 
   node:
-    build: ./node
+    build: ./services/node
     volumes:
       - ../backend:/work/backend
 
   socket:
-    build: ./socket
+    build: ./services/socket
     ports:
       - 6001:6001
 
   redis:
-    build: ./redis
+    build: ./services/redis
 
 volumes:
   php-fpm-socket:
