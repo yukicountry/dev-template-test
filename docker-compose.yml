@@ -4,7 +4,7 @@ services:
   web:
     build: ./services/web
     volumes:
-      - ../backend:/work/backend
+      - ${BACKEND_PROJECT_DIR}:/work/backend
       - php-fpm-socket:/var/run/php-fpm
     ports:
       - 80:80
@@ -13,25 +13,25 @@ services:
   fpm:
     build: ./services/fpm
     volumes:
-      - ../backend:/work/backend
+      - ${BACKEND_PROJECT_DIR}:/work/backend
       - php-fpm-socket:/var/run/php-fpm
 
   composer:
     build: ./services/composer
     volumes:
-      - ../backend:/work/backend
+      - ${BACKEND_PROJECT_DIR}:/work/backend
 
   worker:
     build: ./services/worker
     init: true
     volumes:
-      - ../backend:/work/backend
+      - ${BACKEND_PROJECT_DIR}:/work/backend
 
   scheduler:
     build: ./services/scheduler
     init: true
     volumes:
-      - ../backend:/work/backend
+      - ${BACKEND_PROJECT_DIR}:/work/backend
 
   db:
     build: ./services/db
@@ -43,7 +43,7 @@ services:
   node:
     build: ./services/node
     volumes:
-      - ../backend:/work/backend
+      - ${BACKEND_PROJECT_DIR}:/work/backend
 
   socket:
     build: ./services/socket
