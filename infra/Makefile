@@ -15,6 +15,8 @@ composer:
 	docker-compose exec composer ash
 worker:
 	docker-compose exec worker ash
+scheduler:
+	docker-compose exec scheduler ash
 db:
 	docker-compose exec db bash
 node:
