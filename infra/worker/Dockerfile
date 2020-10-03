@@ -9,15 +9,16 @@ RUN apk upgrade --update && \
     libjpeg-turbo-dev \
     libpng-dev \
     pcre-dev \
-    ${PHPIZE_DEPS} && \
+    ${PHPIZE_DEPS} \
+    imagemagick-dev && \
   # change timezone UTC to JST
   cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
   echo "Asia/Tokyo" > /etc/timezone && \
   # php extensions required for laravel installation
   docker-php-ext-install bcmath gd pdo_mysql && \
   # install redis php extension
-  pecl install redis && \
-  docker-php-ext-enable redis && \
+  pecl install redis imagick && \
+  docker-php-ext-enable redis imagick && \
   # cleaning
   apk del tzdata pcre-dev ${PHPIZE_DEPS} && \
   rm -rf /tmp/pear
