@@ -35,16 +35,16 @@ seed:
 	docker-compose exec fpm php artisan db:seed
 refresh:
 	docker-compose exec fpm php artisan migrate:refresh
-passport-install:
+passport:
 	docker-compose exec fpm php artisan passport:install
 construct:
 	@make migrate
 	@make seed
-	@make passport-install
+	@make passport
 reconstruct:
 	@make refresh
 	@make seed
-	@make passport-install
+	@make passport
 sql:
 	docker-compose exec db bash -c 'mysql --user=$$MYSQL_USER --password=$$MYSQL_PASSWORD --database=$$MYSQL_DATABASE'
 
