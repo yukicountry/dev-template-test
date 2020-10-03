@@ -9,8 +9,8 @@ build:
 # 端末ログイン
 web:
 	docker-compose exec web ash
-app:
-	docker-compose exec app ash
+fpm:
+	docker-compose exec fpm ash
 composer:
 	docker-compose exec composer ash
 worker:
@@ -26,15 +26,15 @@ echo:
 
 # DB
 migrate:
-	docker-compose exec app php artisan migrate
+	docker-compose exec fpm php artisan migrate
 reset:
-	docker-compose exec app php artisan migrate:reset
+	docker-compose exec fpm php artisan migrate:reset
 seed:
-	docker-compose exec app php artisan db:seed
+	docker-compose exec fpm php artisan db:seed
 refresh:
-	docker-compose exec app php artisan migrate:refresh
+	docker-compose exec fpm php artisan migrate:refresh
 passport-install:
-	docker-compose exec app php artisan passport:install
+	docker-compose exec fpm php artisan passport:install
 construct:
 	@make migrate
 	@make seed
