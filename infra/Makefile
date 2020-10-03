@@ -1,4 +1,4 @@
-# コンテナ
+# コンテナ管理
 up:
 	docker-compose up
 down:
@@ -26,7 +26,7 @@ socket:
 redis:
 	docker-compose exec redis ash
 
-# DB
+# DB管理
 migrate:
 	docker-compose exec fpm php artisan migrate
 reset:
@@ -48,7 +48,7 @@ reconstruct:
 sql:
 	docker-compose exec db bash -c 'mysql --user=$$MYSQL_USER --password=$$MYSQL_PASSWORD --database=$$MYSQL_DATABASE'
 
-# インストール
+# 各種インストール
 composer-install:
 	docker-compose run composer composer install
 npm-install:
