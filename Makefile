@@ -55,3 +55,7 @@ composer-install:
 	docker-compose run composer composer install
 npm-install:
 	docker-compose run node npm install
+
+# 監視
+watch-laravel:
+	docker-compose exec fpm tail -f storage/logs/laravel.log
