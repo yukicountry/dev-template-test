@@ -23,7 +23,7 @@ RUN apk upgrade --update && \
   apk del tzdata pcre-dev ${PHPIZE_DEPS} && \
   rm -rf /tmp/pear
 
-RUN (crontab -l && echo "* * * * * cd /work/backend && php artisan schedule:run >> /var/log/cron-std-stderr.log 2>&1") | crontab -
+RUN (crontab -l && echo "* * * * * cd /work/backend && php artisan schedule:run >> /dev/null 2>&1") | crontab -
 
 WORKDIR /work/backend
 
