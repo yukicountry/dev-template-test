@@ -25,4 +25,4 @@ RUN apk upgrade --update && \
 
 WORKDIR /work/backend
 
-CMD ["php", "artisan", "queue:work"]
+CMD ["php", "artisan", "queue:listen"]
